@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def new
+    # URLのqパラメータを受け取って、amazonAPIを使って検索
     if params[:q]
       response = Amazon::Ecs.item_search(params[:q] , 
                                   :search_index => 'All' , 
