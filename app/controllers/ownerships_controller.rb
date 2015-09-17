@@ -61,4 +61,5 @@ class OwnershipsController < ApplicationController
       flash.now[:danger] = "リクエストパラメータにエラーが発生しました。"
     end
   end
+
 end
