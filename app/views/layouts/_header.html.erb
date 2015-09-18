@@ -27,14 +27,29 @@
                 <% end %>
               </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="dropdown-toggle" id="dropdown_ranking" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  ランキング
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown_ranking">
+                  <li>
+                    <%= link_to "Haveランキング" , ranking_have_path  %>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <%= link_to "Wantランキング", ranking_want_path %>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" id="dropdown_user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <span class="gravatar">
                     <%= gravatar_for current_user , size: 20 %>
                   </span>
                   <%= current_user.name %>
                   <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" aria-labelledby="dropdown_user">
                   <li>
                     <%= link_to "プロフィール" , current_user  %>
                   </li>

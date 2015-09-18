@@ -1,0 +1,47 @@
+.page_title{
+  text-align: center;
+  margin: 40px 0 20px;
+  h1{
+    text-shadow: 1px 1px 1px #fff;
+    text-weight: bold;
+  }
+}
+
+.ranking_status {
+  text-align: center;
+  padding-top: 10px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  background: #fafafa;
+  font-size: 13px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  ul {
+    margin: 0 auto 10px;
+    padding: 0;
+    display: table;
+    li {
+      width: 120px;
+      padding: 5px 0;
+      border-right: 1px solid #ddd;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      color: #777;
+      &:last-child {
+        border: none;
+      }
+      .status-have {
+        font-size: 20px;
+        color: #f0ad4e;
+      }
+      .status-want {
+        font-size: 20px;
+        color: #d9534f;
+      }
+      .status-value {
+        font-size: 14px;
+      }
+    }
+  }
+}

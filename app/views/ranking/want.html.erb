@@ -1,0 +1,40 @@
+<div class="page_title">
+  <h1>Want ランキング</h1>
+</div>
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% #構造はhaveランキングページと同一。受け取るのはwantランキング10位までのitem_id %>
+    <% @want_ranking_items_id.each do |id| %>
+    <% item = Item.find(id) %>
+      <div class="item-box">
+        <div class="image">
+          <div class="img-wrap">
+            <% if item.large_image.present? %>
+              <%= image_tag(item.large_image , alt: item.title) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item.title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= item.title %>
+          </p>
+        </div>
+        <div class="ranking_status">
+          <ul>
+              <li>
+                  <div class="status-want"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
+                  <div class="status-value"><%= item.want_users.count %></div>
+              </li>
+              <li>
+                  <div class="status-have"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                  <div class="status-value"><%= item.have_users.count %></div>
+              </li>
+          </ul>
+        </div>
+        <%= render 'items/action' , item: item if logged_in? %>
+      </div>
+    <% end %>
+  </div>
+</div>
