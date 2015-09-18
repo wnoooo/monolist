@@ -11,7 +11,10 @@ class RankingController < ApplicationController
       # have_usersの数でソートして、10を取り出す。配列で返される。
       @have_rank_array = @items_data.sort_by{| key,val | -val }[0..9]
       # 取り出したものを再度hash化して、keyになっているitem.id部分だけを抽出。
-      @have_ranking_items_id = @have_rank_array.to_h.keys
+      #@have_ranking_items_id = @have_rank_array.to_h.keys
+      # 上記はcloud9にて、ruby2.1以降。下はherokuでarrayクラスのto_hメソッドにエラーが出たため
+      @have_ranking_items_id = Hash[*@have_rank_array.flatten].keys
+
   end
     
   def want
@@ -24,7 +27,10 @@ class RankingController < ApplicationController
       # have_usersの数でソートして、10を取り出す。配列で返される。
       @want_rank_array = @items_data.sort_by{| key,val | -val }[0..9]
       # 取り出したものを再度hash化して、keyになっているitem.id部分だけを抽出。
-      @want_ranking_items_id = @want_rank_array.to_h.keys
+      # @want_ranking_items_id = @want_rank_array.to_h.keys
+      # 上記はcloud9にて、ruby2.1以降。下はherokuでarrayクラスのto_hメソッドにエラーが出たため
+      @want_ranking_items_id = Hash[*@want_rank_array.flatten].keys
+
   end
   
   private
