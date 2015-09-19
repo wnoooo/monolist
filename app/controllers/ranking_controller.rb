@@ -2,6 +2,13 @@ class RankingController < ApplicationController
   before_action :set_items, only:[:have, :want]
 
   def have
+      # Item.findの引数に条件にあったitemのidを引っ張ってくるActiveRecordのメソッドを連ねる
+      # リレーションHaveをitem_idでまとめる。orderでランキング作る。count_item_idはcount(:item_id)で作られたカウント値が入った変数
+      # limit(10)で10個だけ取得。count(:item_id)でitem_idを基準にカウントする。keysでitem_idキーだけ取得して配列に入れて返す。
+      # 返されたitem_idの配列をたよりに、Itemテーブルから検索してitemが複数入ったオブジェクトを返す。
+      # @have_rank_items = Item.find(Have.group(:item_id).order("count_item_id DESC").limit(10).count(:item_id).keys)
+      # 上記、ActiveRecordを使って1行で。上のコードを使う場合は、viewでitemをidで探す操作を削除する調整必要
+      
       # itemをいれるハッシュを生成
       @items_data = Hash.new()
       @items.each do |item|
@@ -18,6 +25,9 @@ class RankingController < ApplicationController
   end
     
   def want
+      # @want_rank_items = Item.find(Want.group(:item_id).order("count_item_id DESC").limit(10).count(:item_id).keys)
+      # 上記、ActiveRecordを使って1行で。上のコードを使う場合は、viewでitemをidで探す操作を削除する調整必要
+      
       # itemをいれるハッシュを生成
       @items_data = Hash.new()
       @items.each do |item|
